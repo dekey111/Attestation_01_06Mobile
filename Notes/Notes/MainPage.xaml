@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Изменить" Clicked="ButtonEdit_Clicked"/>
+        <ToolbarItem Text="Добавить" Clicked="ButtonAdd_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <CollectionView x:Name="Notes" Margin="20" 
+                    SelectionMode="Single">
+
+        <CollectionView.ItemsLayout >
+            <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="{Binding Image, TargetNullValue='nophoto.png'}" Aspect="AspectFit"
+                        HeightRequest="80"  x:Name="iImage"/>
+
+                        <StackLayout WidthRequest="300">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Description}" FontSize="Medium" TextColor="Black" 
+                                       LineBreakMode="TailTruncation" MaxLines="3"/>
+                            </StackLayout>
+                            <Label Text="{Binding Date}" FontSize="Small" TextColor="Silver" />
+
+                        </StackLayout>
+
+                        <Button Text="Удалить" Clicked="ButtonDelete_Clicked" />
+                    </StackLayout>
+                </StackLayout>
+
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>
